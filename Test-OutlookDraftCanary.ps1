@@ -57,7 +57,7 @@ $script:GraphAuditScopes = @('Mail.ReadWrite', 'User.Read', 'AuditLogsQuery-Exch
 function Write-LabBanner {
     Write-Host
     Write-Host '============================================================' -ForegroundColor Magenta
-    Write-Host ' OutlookDraftLab' -ForegroundColor Magenta
+    Write-Host ' OutlookDraftCanary' -ForegroundColor Magenta
     Write-Host ' Authorized control test — Graph draft, never sent' -ForegroundColor Green
     Write-Host ' @cyberw01f' -ForegroundColor Green
     Write-Host '============================================================' -ForegroundColor Magenta
