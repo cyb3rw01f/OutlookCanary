@@ -1,6 +1,6 @@
 # Fixture principles
 
-Cybersecurity test fixtures are **not products**. They exist to help analysts confidently answer: **would we log this, and would we detect it, if it happened?**
+Cybersecurity test fixtures are **not products**. They exist to help analysts confidently answer: **would we log this if it happened? Can we write a SIEM rule that will detect it?**
 
 These apply to this script and to every fixture in this family.
 

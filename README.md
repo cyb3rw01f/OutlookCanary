@@ -1,6 +1,6 @@
 # OutlookDraftLab
 
-**First draft. Not a product.** A small lab fixture so an analyst can ask: would we log this, and would we detect it, if it happened? It is intentionally narrow and will change. Later improvements stay as small fixtures, not a platform.
+**First draft. Not a product.** A small lab fixture so an analyst can ask: would we log this if it happened? Can we write a SIEM rule that will detect it? It is intentionally narrow and will change. Later improvements stay as small fixtures, not a platform.
 
 A PowerShell control test. It creates **one Outlook draft through Microsoft Graph**, then tells you **what to search for in your SIEM**.
 

@@ -358,6 +358,8 @@ function Write-LabSiemCard {
     Write-Host '------------------------------------------------------------'
     Write-Host 'GO CHECK YOUR SIEM'
     Write-Host 'This script does not query Elastic, Sentinel, Splunk, or any other SIEM.'
+    Write-Host 'First: can you find this event (would we log it)?'
+    Write-Host 'Then: can we write a SIEM rule that will detect it?'
     Write-Host 'Ingest is often delayed. Wait 15-30 minutes before you call it a miss.'
     Write-Host 'A search that is empty at T+2 minutes usually means lag, not failure.'
     Write-Host
