@@ -158,7 +158,8 @@ function Remove-LabDraft {
         [string]$MessageId
     )
 
-    Invoke-LabGraph -Method DELETE -Uri "https://graph.microsoft.com/v1.0/me/messages/$MessageId"
+    $encodedId = [Uri]::EscapeDataString($MessageId)
+    Invoke-LabGraph -Method DELETE -Uri "https://graph.microsoft.com/v1.0/me/messages/$encodedId"
 }
 
 function Test-LabRecordHit {
@@ -352,7 +353,7 @@ function Write-LabSiemCard {
     )
 
     $windowStart = $CreatedUtc
-    $windowHint = 'from WHEN (UTC) through WHEN + 30 minutes (or longer if your pipeline is slow)'
+    $windowHint = "from $CreatedUtc through 30+ minutes later (UTC; wait longer if your pipeline is slow)"
 
     Write-Host
     Write-Host '------------------------------------------------------------'
@@ -442,7 +443,9 @@ try {
     $logged = 'not checked (source audit off; that is normal)'
     $detail = 'Use -CheckMicrosoftAudit if you also want a Microsoft unified-audit yes/no.'
 
-    Write-LabSiemCard -Canary $canary -Mailbox $box.userPrincipalName -MessageId $draft.id -CreatedUtc $createdUtc -Logged $logged -LogDetail $detail
+    Write-Host "HUNT NOW: $canary"
+    Write-Host "Mailbox : $($box.userPrincipalName)  When: $createdUtc"
+    Write-Host 'Full filter card prints at the end. SIEM ingest still lags.'
 
     if ($auditEnabled) {
         Write-Host "Optional: searching Microsoft unified audit for up to $WaitMinutes minute(s)..."
@@ -463,12 +466,9 @@ try {
             $logged = 'NO'
             $detail = "No matching Create/Update in $WaitMinutes minute(s) on the Microsoft side."
         }
-
-        Write-Host
-        Write-Host "M365 unified audit (source, not SIEM): $logged"
-        Write-Host "DETAIL : $detail"
-        Write-Host
     }
+
+    Write-LabSiemCard -Canary $canary -Mailbox $box.userPrincipalName -MessageId $draft.id -CreatedUtc $createdUtc -Logged $logged -LogDetail $detail
 }
 finally {
     if ($draft -and $draft.id -and -not $SkipCleanup) {
