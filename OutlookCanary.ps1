@@ -29,10 +29,10 @@ set. Default 10. Does not apply to your SIEM.
 Leave the draft in the mailbox after the run.
 
 .EXAMPLE
-.\Test-OutlookCanary.ps1
+.\OutlookCanary.ps1
 
 .EXAMPLE
-.\Test-OutlookCanary.ps1 -CheckMicrosoftAudit -WaitMinutes 15
+.\OutlookCanary.ps1 -CheckMicrosoftAudit -WaitMinutes 15
 
 .NOTES
 Author @cyb3rw01f

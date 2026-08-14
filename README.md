@@ -47,16 +47,16 @@ Wait 15–30 minutes. Empty in the first couple of minutes is almost always inge
 ```powershell
 Set-Location C:\path\to\OutlookCanary
 Set-ExecutionPolicy -Scope Process Bypass
-.\Test-OutlookCanary.ps1 -WhatIf
-.\Test-OutlookCanary.ps1
+.\OutlookCanary.ps1 -WhatIf
+.\OutlookCanary.ps1
 ```
 
 Sign in as the lab mailbox. Accept `Mail.ReadWrite` and `User.Read` if it asks. The script creates one draft, prints the hunt card, and deletes the draft unless you pass `-SkipCleanup`.
 
 ```powershell
-.\Test-OutlookCanary.ps1 -SkipCleanup
-.\Test-OutlookCanary.ps1 -CheckMicrosoftAudit
-.\Test-OutlookCanary.ps1 -CheckMicrosoftAudit -WaitMinutes 15
+.\OutlookCanary.ps1 -SkipCleanup
+.\OutlookCanary.ps1 -CheckMicrosoftAudit
+.\OutlookCanary.ps1 -CheckMicrosoftAudit -WaitMinutes 15
 ```
 
 Copy `CANARY`, `MAILBOX`, `WHEN`, and `MSG ID` off the card. The canary looks like `LAB-DRAFT-20260814-A1B2`. That string *is* the draft subject. Start there.
