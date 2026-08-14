@@ -1,4 +1,4 @@
-# OutlookDraftCanary
+# OutlookCanary
 
 **First draft. Not a product.** A small lab fixture so an analyst can ask: would we log this if it happened? Can we write a SIEM rule that will detect it?
 
@@ -41,16 +41,16 @@ Filter on, in order: exact canary, mailbox, time window (WHEN through 30+ minute
 
 ```powershell
 Install-Module Microsoft.Graph.Authentication -Scope CurrentUser
-Set-Location C:\path\to\OutlookDraftCanary
+Set-Location C:\path\to\OutlookCanary
 Set-ExecutionPolicy -Scope Process Bypass
-.\Test-OutlookDraftCanary.ps1
+.\Test-OutlookCanary.ps1
 ```
 
 ```powershell
-.\Test-OutlookDraftCanary.ps1 -WhatIf
-.\Test-OutlookDraftCanary.ps1 -SkipCleanup
-.\Test-OutlookDraftCanary.ps1 -CheckMicrosoftAudit
-.\Test-OutlookDraftCanary.ps1 -CheckMicrosoftAudit -WaitMinutes 15
+.\Test-OutlookCanary.ps1 -WhatIf
+.\Test-OutlookCanary.ps1 -SkipCleanup
+.\Test-OutlookCanary.ps1 -CheckMicrosoftAudit
+.\Test-OutlookCanary.ps1 -CheckMicrosoftAudit -WaitMinutes 15
 ```
 
 You do not need SIEM credentials or a specific vendor.

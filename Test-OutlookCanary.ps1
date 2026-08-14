@@ -29,10 +29,10 @@ set. Default 10. Does not apply to your SIEM.
 Leave the draft in the mailbox after the run.
 
 .EXAMPLE
-.\Test-OutlookDraftGraph.ps1
+.\Test-OutlookCanary.ps1
 
 .EXAMPLE
-.\Test-OutlookDraftGraph.ps1 -CheckMicrosoftAudit -WaitMinutes 15
+.\Test-OutlookCanary.ps1 -CheckMicrosoftAudit -WaitMinutes 15
 
 .NOTES
 Author @cyb3rw01f
@@ -55,12 +55,39 @@ $script:GraphMailScopes = @('Mail.ReadWrite', 'User.Read')
 $script:GraphAuditScopes = @('Mail.ReadWrite', 'User.Read', 'AuditLogsQuery-Exchange.Read.All')
 
 function Write-LabBanner {
+    $logo = @"
+=================================================================
+					     ___  _  __
+	 ___ _   _| |__   ___ _ ____      __/ _ \/ |/ _|
+	/ __| | | | '_ \ / _ \ '__\ \ /\ / / | | | | |_
+       | (__| |_| | |_) |  __/ |   \ V  V /| |_| | |  _|
+	\___|\__, |_.__/ \___|_|    \_/\_/  \___/|_|_|
+	      |___/
+
+=================================================================
+                                 /\__/\
+                                /      \
+                               |  -  -  |
+                     __________| \     /|
+                   /              \ T / |
+                 /                      |
+                |  ||     |    |       /
+                |  ||    /______\     / |
+                |  | \  |  /     \   /  |
+                 \/   | |\ \      | | \ \
+                      | | \ \     | |  \ \
+                      | |  \ \    | |   \ \
+                      '''   '''   '''    '
+			     @cyberw01f
+"@
+    $label = @"
+                     OutlookCanary
+            Authorized control testing only
+"@
     Write-Host
-    Write-Host '============================================================' -ForegroundColor Magenta
-    Write-Host ' OutlookDraftCanary' -ForegroundColor Magenta
-    Write-Host ' Authorized control test — Graph draft, never sent' -ForegroundColor Green
-    Write-Host ' @cyberw01f' -ForegroundColor Green
-    Write-Host '============================================================' -ForegroundColor Magenta
+    Write-Host -ForegroundColor Magenta $logo
+    Write-Host
+    Write-Host -ForegroundColor Green $label
     Write-Host
 }
 
