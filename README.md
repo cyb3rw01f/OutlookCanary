@@ -2,6 +2,10 @@
 
 **First draft. Not a product.** A small lab fixture so an analyst can ask: would we log this if it happened? Can we write a SIEM rule that will detect it?
 
+## Why this test matters
+
+After a breach, quiet theft often does **not** look like ransomware or a strange C2 domain. Incident writeups (Elastic FINALDRAFT and SIESTAGRAPH, Symantec’s Graph/OneDrive campaigns, OilBooster) show operators writing to **Outlook through Microsoft’s own API** — drafts, calendars, OneDrive — and never sending mail. Mail-gateway DLP never sees it. The traffic is `graph.microsoft.com`. If you cannot find a labeled draft you created on purpose, you will not find the same shape when it is hostile.
+
 It creates **one labeled Outlook draft** that is never sent, then tells you **what to search for in your SIEM**. It does not connect to Elastic, Sentinel, Splunk, or any other SIEM. You hunt.
 
 Ingest is often late. An empty search in the first few minutes is usually delay, not a failed test. Wait 15–30 minutes before you call it a miss.
